@@ -1,13 +1,15 @@
 ---
+import BaseLayout from "../layouts/BaseLayout.astro"
 import Nav from "../components/Nav.astro"
 import Footer from "../components/Footer.astro"
 import Box from "../components/Box.astro"
 import Product from "../components/Product.astro"
 ---
-
+<BaseLayout> 
 <Nav />
 <main>
 <Box />
 <Product />
 </main>
 <Footer />
+</BaseLayout>
