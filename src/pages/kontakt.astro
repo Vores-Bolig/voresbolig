@@ -1,0 +1,94 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Footer from "../components/Footer.astro";
+---
+<BaseLayout>
+    <section>
+<h1>KONTAKT<br>OS</h1>
+
+<div class="streg"></div>
+
+<p class="text">Har du spørgsmål, brug for hjælp eller ønsker du at komme i kontakt med os? Vi står klar til at hjælpe dig. Uanset om du er beboer eller boligsøgende, er du altid velkommen til at ringe, skrive eller besøge os. Vi gør vores bedste for at give dig hurtig og personlig service.</p>
+
+<div class="contact-info">
+  <div class="info">E:</div>
+  <div class="info">vb@voresbolig.dk</div>
+
+  <div class="info">T:</div>
+  <div class="info">43 40 36 00</div>
+
+  <div class="info">TT:</div>
+  <div class="info">Mandag-fredag<br>kl. 08:00-12:00</div>
+
+  <div class="info">A:</div>
+  <div class="info">
+    Vores Bolig<br>
+    Heimdalsvej 7C<br>
+    3600 Frederikssund
+  </div>
+</div>
+
+<div class="container">
+<img src="/public/voresbolig.webp" alt="Vores Bolig Kontor">
+</div>
+</section>
+
+<style>
+
+    section {
+        margin: 8px;
+    }
+
+h1 {
+    font-size: 64px;
+    font-family: "Whyte Inktrap";
+    font-weight: 500;
+    line-height: 96%;
+    margin-bottom: 48px;
+}
+
+.streg {
+    border-top: 1px solid #d9d9d9;
+    margin-bottom: 24px;
+}
+
+.contact-info{
+  display: grid;
+  grid-template-columns: 1fr 2fr; /* label kolonne + tekst kolonne */
+
+}
+
+.text {
+  font-size: 16px;
+  font-family: "Whyte";
+  margin-bottom: 80px;
+}
+
+.info {
+  font-size: 16px;
+  font-family: "Whyte";
+  margin-bottom: 24px;
+}
+
+.contact-info {
+    margin-bottom: 80px;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 80px;
+}
+
+img {
+width: 374px;
+    height: 628px;
+    object-fit: cover;
+    justify-content: center;
+}
+
+</style>
+
+
+<Footer />
+</BaseLayout>
