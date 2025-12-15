@@ -1,4 +1,6 @@
 <section>
+<img class="logo" src="/logo.svg" alt="Logo">
+
 
 <div class="streg"></div>
 
@@ -15,9 +17,10 @@
         vb@voresbolig.dk<br />
         43 40 36 00
     </p>
+    </div>
 
-    <div class="footer_col">
-
+<div class="footer_col">
+ <div class="footer_section">
         <p class="kontakt_header"> MENU</p>
 
         <nav class="footer_menu">
@@ -27,10 +30,30 @@
                  <a href="../pages/om.astro">Om os</a>
                       <a href="../pages/kontakt.astro">Kontakt</a>
         </nav>
+</div>
+
+ <div class="footer_section">
+<p class="kontakt_header">SOCIALE MEDIER</p>
+
+<p class="kontakt_tekst">Facebook<br />
+    Insagram<br />
+    LinkedIn
+</p>
+</div>
     </div>
 
-</div>
+
+<div class="footer_top">
+    <a href="/">Tilbage til toppen</a>
+    </div>
+
+    <div class="footer__bottom">
+      <p class="kontakt_tekst">Vores Bolig 2025</p>
+      <p class="kontakt_tekst">Privatlivspolitik</p>
+    </div>
+
 </section>
+
 <style>
 
 body {
@@ -41,6 +64,11 @@ section {
     background-color: #5D4E46;
     color: #fbfbfb;
     padding: 8px;
+    min-height: 844px;
+}
+
+.logo {
+    color: #fbfbfb;
 }
 
 .streg {
@@ -59,6 +87,36 @@ section {
     font-size: 16px;
     font-family: "Whyte";
     margin-bottom: 16px;
+}
+
+.footer_col {
+display: grid;
+grid-template-columns: 1fr 1fr;
+margin-bottom: 24px;
+}
+
+.footer_menu {
+    display: grid;
+    font-family: "Whyte";
+}
+
+a {
+    text-decoration: none;
+    color: #fbfbfb;
+}
+
+.footer_top {
+    font-family: "Whyte";
+    margin-bottom: 24px;
+}
+
+.footer_bottom {
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  font-size: 16px;
+  font-family: "Whyte";
+  
 }
 
 </style>
