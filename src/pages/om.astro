@@ -1,0 +1,106 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Footer from "../components/Footer.astro";
+---
+<BaseLayout>
+<section>
+
+<h1>ARBEJDET OG<br>MENNESKERNE<br>BAG VORES BOLIG</h1>
+
+<div class="streg"></div>
+
+<p class="undertitel">Om os</p>
+
+<p class="text_oppe">Vores Bolig er et alment boligselskab, der arbejder for at skabe trygge og bæredygtige rammer for mennesker i alle livsfaser. Vi udlejer boliger og lokaler med fokus på kvalitet, tryghed, stabilitet og en økonomi, der er til at betale, fordi vores arbejde bygger på et non-profit princip, hvor beboernes behov altid kommer først. </p>
+
+<p class="text_under">Vi står for den daglige drift af vores boligafdelinger og sikrer, at bygningerne bliver passet godt på. Samtidig lægger vi stor vægt på nærværende service og tydelig kommunikation, så både nye og nuværende beboere oplever professionel hjælp og tryghed i deres hverdag hos os.</p>
+
+<div class="container_venstre">
+<img class="billede" src="/public/poster.webp" alt="Poster">
+</div>
+
+<div class="container_right">
+<img class="billede" src="/public/frame.webp" alt="Poster">
+</div>
+
+<h2>VORES<br>FAMILIE</h2>
+
+<div class="streg"></div>
+
+<p class="undertitel">Team</p>
+
+<p class="text_under">Vores Bolig består af over 60 medarbejdere, som hver dag arbejder for at skabe trygge, stabile og velfungerende hjem for vores beboere. Nogle arbejder med ledelse, planlægning og udvikling af nye projekter, mens andre sørger for den daglige drift, koordinering og beboerservice. Vi har teams, der hjælper ved renoveringer og genhusning, og servicehold der passer udeområder, bygninger og tekniske installationer. Sammen tager vi hånd om både de store linjer og de små detaljer, så vores beboere får en god oplevelse</p>
+
+
+
+</section>
+
+<style>
+
+section {
+        margin: 8px;
+    }
+
+h1 {
+    font-size: 40px;
+    font-family: "Whyte Inktrap";
+    font-weight: 500;
+    line-height: 96%;
+    margin-bottom: 48px;
+}
+
+.streg {
+    border-top: 1px solid #d9d9d9;
+    margin-bottom: 24px;
+}
+
+.undertitel {
+  font-size: 16px;
+  font-family: "Whyte";
+  margin-bottom: 32px;
+}
+
+.text_oppe {
+  font-size: 16px;
+  font-family: "Whyte";
+  margin-bottom: 24px;
+}
+
+.text_under {
+  font-size: 16px;
+  font-family: "Whyte";
+  margin-bottom: 80px;
+}
+
+.container_venstre {
+    display: flex;
+    justify-content: left;
+    margin-bottom: 24px;
+}
+
+.billede {
+    width: 279px;
+    height: 372px;
+}
+
+.container_right {
+    display: flex;
+    justify-content: right;
+    object-fit: cover;
+    margin-bottom: 120px;
+}
+
+h2 {
+    font-size: 64px;
+    font-family: "Whyte Inktrap";
+    font-weight: 500;
+    line-height: 96%;
+    margin-bottom: 48px;
+}
+
+
+</style>
+
+
+<Footer />
+</BaseLayout>
