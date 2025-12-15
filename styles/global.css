@@ -1,29 +1,28 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-background-color: #FBFBFB;
-color: #040404;
-margin-inline: 24px;
+  background-color: #fbfbfb;
+  color: #040404;
+  margin-inline: 24px;
 }
 
 /***********FONTS***********/
 @font-face {
-    font-family:"Whyte Inktrap";
-    src: url(ABCWhyteInktrapVariable-Trial.woff2) format(woff2);
+  font-family: "Whyte Inktrap";
+  src: url(ABCWhyteInktrapVariable-Trial.woff2) format("woff2");
 }
 
 @font-face {
-    font-family:"Whyte";
-    src: url(ABCWhyteVariable-Trial.woff2) format(woff2);
+  font-family: "Whyte";
+  src: url(ABCWhyteVariable-Trial.woff2) format("woff2");
 }
 
 @font-face {
-    font-family:"Whyte Mono Inktrap";
-    src: url(ABCWhyteMonoInktrapVariable-Trial.woff2) format(woff2);
+  font-family: "Whyte Mono Inktrap";
+  src: url(ABCWhyteMonoInktrapVariable-Trial.woff2) format("woff2");
 }
 /***********FONTS***********/
-
