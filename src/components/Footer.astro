@@ -1,5 +1,5 @@
 <section>
-<img class="logo" src="/logo.svg" alt="Logo">
+<img class="logo" src="/logo_hvid.webp" alt="Logo Hvid">
 
 
 <div class="streg"></div>
@@ -13,7 +13,7 @@
         3600 Frederikssund
     </p>
 
-    <p class="kontakt_tekst">
+    <p class="kontakt_tekst_nedre">
         vb@voresbolig.dk<br />
         43 40 36 00
     </p>
@@ -47,9 +47,9 @@
     <a href="/">Tilbage til toppen</a>
     </div>
 
-    <div class="footer__bottom">
-      <p class="kontakt_tekst">Vores Bolig 2025</p>
-      <p class="kontakt_tekst">Privatlivspolitik</p>
+    <div class="footer_bottom">
+      <span class="kontakt_tekst">Vores Bolig 2025</span>
+      <span class="kontakt_tekst">Privatlivspolitik</span>
     </div>
 
 </section>
@@ -68,19 +68,18 @@ section {
 }
 
 .logo {
-    color: #fbfbfb;
+    margin-bottom: 125px;
 }
 
 .streg {
     border-top: 1px solid #fbfbfb;
     margin-bottom: 24px;
-    padding: 0px;
 }
 
 .kontakt_header {
     font-size: 12px;
     font-family: "Whyte Mono Inktrap";
-    margin-bottom: 24px;
+    margin-bottom: 40px;
 }
 
 .kontakt_tekst {
@@ -89,10 +88,15 @@ section {
     margin-bottom: 16px;
 }
 
+.kontakt_tekst_nedre {
+
+    margin-bottom: 64px;
+}
+
 .footer_col {
 display: grid;
 grid-template-columns: 1fr 1fr;
-margin-bottom: 24px;
+margin-bottom: 144px;
 }
 
 .footer_menu {
@@ -107,16 +111,15 @@ a {
 
 .footer_top {
     font-family: "Whyte";
-    margin-bottom: 24px;
+    margin-bottom: 40px;
 }
 
 .footer_bottom {
   display: flex;
   justify-content: space-between;
-  gap: 18px;
+  gap: 60px;
   font-size: 16px;
   font-family: "Whyte";
-  
 }
 
 </style>
