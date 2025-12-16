@@ -22,7 +22,7 @@ const {
 } = Astro.props;
 
 
-const normalizedLines: Line[] = lines.map((l) =>
+const normalizedLines: Line[] = lines.map((l: string | Line) =>
   typeof l === "string" ? { text: l } : l
 );
 ---
