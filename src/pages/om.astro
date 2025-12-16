@@ -33,47 +33,173 @@ import Footer from "../components/Footer.astro";
 <p class="text_under">Vores Bolig består af over 60 medarbejdere, som hver dag arbejder for at skabe trygge, stabile og velfungerende hjem for vores beboere. Nogle arbejder med ledelse, planlægning og udvikling af nye projekter, mens andre sørger for den daglige drift, koordinering og beboerservice. Vi har teams, der hjælper ved renoveringer og genhusning, og servicehold der passer udeområder, bygninger og tekniske installationer. Sammen tager vi hånd om både de store linjer og de små detaljer, så vores beboere får en god oplevelse</p>
 
 <Box
-number={1} title="Direktør" text="Kim Brokmann"
+number="01"
+  title="Direktør"
+  lines={[
+    "Kim Brokmann",
+  ]}
 />
 
 <Box
-number={2} title="Sekretariatschef" text="Britt Randrup"
+number="02"
+  title="Sekretariatschef"
+  lines={[
+    "Britt Randrup",
+  ]}
 />
 
 <Box
-number={3} title="Driftschef" text="Elvir Vejo"
+number="03"
+  title="Driftschef"
+  lines={[
+    "Elvir Vejo",
+    { text: "Ballerup, Egedal, Søllerød", dim: true },
+        "Jesper Kristensen",
+    { text: "Halsnæs", dim: true },
+        "Kim Raagaard",
+    { text: "Helsinge", dim: true },
+        "Palle Thomsen",
+    { text: "Frederikssund", dim: true },
+  ]}
 />
 
 <Box
-number={2} title="Sekretariatschef" text="Britt Randrup"
+number="04"
+  title="Projektleder"
+  lines={[
+    "Brain Bøgelund Hansen",
+    { text: "Projekter Drift", dim: true },
+  ]}
 />
 
 <Box
-number={2} title="Sekretariatschef" text="Britt Randrup"
+number="05"
+  title="Driftskoordinator"
+  lines={[
+    "Rikke Larsen",
+    { text: "Frederikssund", dim: true },
+        "Sofie Stenholt Støckel",
+    { text: "Ballerup, Egedal, Søllerød", dim: true },
+        "Johnny Bjørklund",
+    { text: "Ballerup, Egedal, Søllerød", dim: true },
+  ]}
 />
 
 <Box
-number={2} title="Sekretariatschef" text="Britt Randrup"
+number="06"
+  title="Servicekoordinator"
+  lines={[
+    "Birgitte Kjær",
+    { text: "Frontoffice", dim: true },
+        "Helle Hansen",
+    { text: "Frontoffice", dim: true },
+        "Marianne Ulf Petersen",
+    { text: "Frontoffice", dim: true },
+        "Flemming Hou Christiansen",
+    { text: "Frontoffice", dim: true },
+  ]}
 />
 
 <Box
-number={2} title="Sekretariatschef" text="Britt Randrup"
+number="07"
+  title="Projektchef"
+  lines={[
+    "Kaare Holm Madsen",
+    { text: "Helhedsplaner", dim: true },
+  ]}
 />
 
 <Box
-number={2} title="Sekretariatschef" text="Britt Randrup"
+number="08"
+  title="Genhusningskonsulent"
+  lines={[
+    "Thomas Bak",
+    { text: "Helhedsplaner", dim: true },
+  ]}
 />
 
 <Box
-number={2} title="Sekretariatschef" text="Britt Randrup"
+number="09"
+  title="Blå Service"
+  lines={[
+    "Tim Nielsen",
+    { text: "Halsnæs", dim: true },
+        "Morten Nielsen",
+    { text: "Helsinge", dim: true },
+        "Casper Lumsås",
+    { text: "Helsinge", dim: true },
+        "Kim Sohn Hansen",
+    { text: "Frederikssund", dim: true },
+        "Jesper Will Hansen",
+    { text: "Frederikssund", dim: true },
+        "Michael Valdemar Larsen",
+    { text: "Frederikssund", dim: true },
+        "Michael Klejn",
+    { text: "Frederikssund", dim: true },
+        "Silver Simon Kracunovic",
+    { text: "Frederikssund", dim: true },
+        "Lars Petersen",
+    { text: "Egedal, Søllerød", dim: true },
+        "Peter Balslev Hoffmann",
+    { text: "Egedal, Søllerød", dim: true },
+        "Thomas Gjetting",
+    { text: "Ballerup, Egedal", dim: true },
+        "Niels Jørgen Villekjær",
+    { text: "Ballerup, Egedal", dim: true },
+        "Ole Blem Nielsen",
+  ]}
 />
 
 <Box
-number={2} title="Sekretariatschef" text="Britt Randrup"
+number="10"
+  title="Grøn Formand"
+  lines={[
+    "Stig Jensen",
+    { text: "Frederikssund, Græse", dim: true },
+        "Brian Holger Nielsen",
+    { text: "Helsinge, Halsnæs", dim: true },
+        "Mads Bardino Petersen",
+    { text: "Ballerup, Egedal", dim: true },
+  ]}
 />
 
 <Box
-number={2} title="Sekretariatschef" text="Britt Randrup"
+number="11"
+  title="Grøn Service"
+  lines={[
+    "Henrik Mortensen Breiling",
+    { text: "Frederikssund", dim: true },
+        "Kim Persson",
+    { text: "Frederikssund", dim: true },
+        "Tom Meisler Nielsen",
+    { text: "Frederikssund, Græse", dim: true },
+        "John Persson",
+    { text: "Frederikssund, Græse", dim: true },
+        "Yuzdzhan V. Veli",
+    { text: "Helsinge", dim: true },
+        "Claus Nielsen",
+    { text: "Helsinge", dim: true },
+        "Piotr Antoni Borek",
+    { text: "Helsinge", dim: true },
+        "Sylwia Monika Borek",
+    { text: "Helsinge", dim: true },
+        "Rene Bjerggard Hansen",
+    { text: "Halsnæs", dim: true },
+        "Emrah Velyahtin Veli",
+    { text: "Halsnæs", dim: true },
+        "Laurits Olsen",
+    { text: "Halsnæs", dim: true },
+        "Diderich Løvschal Diderichsen",
+    { text: "Halsnæs", dim: true },
+        "William Sveistrup Mogensen",
+    { text: "Ballerup", dim: true },
+        "Martin Olesen",
+    { text: "Ballerup", dim: true },
+        "Kristian Kjøller Bloch Gregersen",
+    { text: "Ballerup", dim: true },
+        "Kristian Nielsen",
+    { text: "Ballerup", dim: true },
+  ]}
 />
 
 </section>
