@@ -1,0 +1,205 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro"
+import Product from "../components/Product.astro"
+---
+
+<BaseLayout> 
+<h1 class="lokaler">7 LOKALER</h1>
+<p class="sorter"> SORTER EFTER: ANBEFALET </p>
+
+
+<div class="desktop-labels">
+  <span>BY:</span>
+  <span>PRIS:</span>
+  <span>PERSONER:</span>
+  <span>KAN LEJES AF:</span>
+</div>
+
+<hr class="line"> </hr>
+
+<div class= "product-wrapper">
+<Product
+  image="public/centerhuset.webp"
+  by="Frederikssund"
+  pris="Fra 1.300 kr."
+  personer="Max. 30"
+  kanLejes="Alle"
+  />
+
+  <Product 
+  image="public/det_lille_fælleshus.webp"
+  by="Ballerup"
+  pris="Fra 1.400 kr."
+  personer="Max. 20"
+  kanLejes="Beboere"
+  />
+
+  <Product 
+  image="public/bispevangen.webp"
+  by="Ballerup"
+  pris="Fra 3.100 kr."
+  personer="Max. 50"
+  kanLejes="Beboere"
+  />
+  <Product 
+  
+  image="public/elme.webp"
+  by="Melby"
+  pris="Fra 1.600kr."
+  personer="Max. 50"
+  kanLejes="Beboere"
+  />
+  <Product 
+  image="public/gefionparken.webp"
+  by="Frederikssund"
+  pris="Fra 1.800 kr."
+  personer="Max. 40"
+  kanLejes="Beboere"
+  />
+  <Product 
+  image="public/harager.webp"
+  by="Helsinge"
+  pris="Fra 2.800 kr."
+  personer="Max. 40"
+  kanLejes="Beboere"
+  />
+  <Product 
+  image="public/soepavillonen.webp"
+  by="Ballerup"
+  pris="Fra 6.100 kr."
+  personer="Max. 40"
+  kanLejes="Alle"
+  />
+ 
+</div>
+</BaseLayout>
+
+
+<style>
+   
+    /* Base Styles */
+    .lokaler {
+        font-family: Whyte Inktrap;
+        padding-top: 2rem;
+    }
+.value{
+    color: #040404;
+}
+
+
+
+    .sorter {
+        font-family: Whyte Inktrap;
+        padding-top: 2rem;
+        font-size: x-small;
+        text-decoration: underline;
+        margin-bottom: 8px;
+    }
+
+    .label {
+        font-family: "Whyte Inktrap";
+    }
+
+    .line {
+        border: none; /* fjerner standard */
+        height: 0.1rem;
+        background-color: #dddd;
+    }
+
+    /* Mobile: Default styling for all cards */
+    .product-wrapper :global(.card .label),
+    .product-wrapper :global(.card .value) {
+        font-family: "Whyte Inktrap";
+    }
+
+    .desktop-labels{
+        display: none;
+    }
+
+    /* ========================= */
+    /* ===== DESKTOP ONLY ===== */
+    /* ========================= */
+
+    @media (min-width: 750px) {
+
+.desktop-labels {
+    display: grid;
+    grid-template-columns: 160px 160px 160px 1fr;
+    column-gap: 32px;
+    margin-bottom: 8px;
+
+    font-family: "Whyte Inktrap";
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #000;
+  }
+
+
+   
+
+        /* Hele kortet: tekst venstre, billede højre */
+        .product-wrapper :global(.card) {
+            display: grid;
+            grid-template-columns: 1fr ;  /* tekst til venstre, billede til højre */
+            gap: 40px;
+            align-items: center;
+            padding: 32px 0;
+            border-bottom: 1px solid #e5e5e5;
+        }
+        
+
+        /* Fjern mobil-stacking */
+        .product-wrapper :global(.content) {
+            width: 100%;
+        }
+
+        .sorter{
+            justify-self: end;
+            text-align: right;
+        }
+
+        /* Info-rækken → 4 kolonner */
+        .product-wrapper :global(.info) {
+            display: grid;
+            grid-template-columns: 160px 160px 160px 1fr;
+            column-gap: 32px;
+            row-gap: 4px;
+            margin-bottom: 16px;
+        }
+
+        /* Labels (BY, PRIS osv.) */
+        .product-wrapper :global(.label) {
+            font-size: 11px;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: #666;
+            display: none;
+        }
+
+        
+
+        /* Values (Frederikssund, Fra 1.300 kr.) */
+        .product-wrapper :global(.value) {
+            font-size: 14px;
+            line-height: 1.4;
+            color: #040404;
+            position: relative;
+            top: -240px;
+        }
+
+        /* Billedet */
+        .product-wrapper :global(.image) {
+            width: 260px;
+            height: 200px;
+            justify-self: end;
+            background-size: cover;
+            background-position: center;
+        }
+
+    }
+
+
+
+
+</style>
