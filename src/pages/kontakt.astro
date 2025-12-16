@@ -1,13 +1,27 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Footer from "../components/Footer.astro";
+import Nav from "../components/Nav.astro"
 ---
 <BaseLayout>
+  <Nav />
     <section>
-<h1>KONTAKT<br>OS</h1>
+<h1 class="title">
+  <span class="kontakt">KONTAKT</span>
+  <span class="os">OS</span>
+</h1>
 
 <div class="streg"></div>
 
+
+
+<div class="info-container">
+
+<div class="container">
+<img src="/public/voresbolig.webp" alt="Vores Bolig Kontor">
+</div>
+
+<div>
 <p class="text">Har du spørgsmål, brug for hjælp eller ønsker du at komme i kontakt med os? Vi står klar til at hjælpe dig. Uanset om du er beboer eller boligsøgende, er du altid velkommen til at ringe, skrive eller besøge os. Vi gør vores bedste for at give dig hurtig og personlig service.</p>
 
 <div class="contact-info">
@@ -27,9 +41,9 @@ import Footer from "../components/Footer.astro";
     3600 Frederikssund
   </div>
 </div>
+</div>
 
-<div class="container">
-<img src="/public/voresbolig.webp" alt="Vores Bolig Kontor">
+
 </div>
 </section>
 
@@ -45,7 +59,9 @@ h1 {
     font-weight: 500;
     line-height: 96%;
     margin-bottom: 48px;
+    
 }
+
 
 .streg {
     border-top: 1px solid #d9d9d9;
@@ -55,6 +71,7 @@ h1 {
 .contact-info{
   display: grid;
   grid-template-columns: 1fr 2fr; /* label kolonne + tekst kolonne */
+  
 
 }
 
@@ -85,6 +102,72 @@ width: 374px;
     height: 628px;
     object-fit: cover;
     justify-content: center;
+}
+.title span{
+  display: block;
+}
+
+@media (min-width: 750px) {
+
+    section{
+    margin: 8px;
+  }
+
+  h1 {
+    font-size: 120px;
+    font-family: "Whyte Inktrap";
+    font-weight: 325;
+    padding-top: 20px;
+    margin-bottom: 10px;
+}
+.title {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+
+  .title span {
+    display: inline;
+  }
+
+.info-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr; 
+  
+}
+
+.info {
+  font-size: 24px;
+}
+  img {
+    width: 100%;
+    width: 453px;
+    height: 628px;
+    object-fit: cover;
+    padding-left: 10px;
+  }
+
+  .container {
+    display: block;
+    margin-bottom: 80px;
+}
+
+  .contact {
+    max-width: 520px;
+  }
+
+  .text {
+    font-size: 24px;
+    margin-bottom: 64px;
+    text-indent: 112px;
+    
+  }
+
+  .contact-info {
+    grid-template-columns: 80spx 1fr;
+    row-gap: 16px;
+  }
+
 }
 
 </style>
