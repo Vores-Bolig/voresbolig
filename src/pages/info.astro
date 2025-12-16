@@ -1,0 +1,214 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Box from "../components/Box.astro";
+import Footer from "../components/Footer.astro";
+---
+
+<BaseLayout>
+<section>
+<h1>ARBEJDET OG<br>MENNESKERNE<br>BAG VORES BOLIG</h1>
+
+<div class="streg"></div>
+
+  <div class="feature__wrap">
+    <div class="feature__number">01</div>
+
+    <div class="feature__content">
+      <p class="feature__title">Almene boliger</p>
+
+      <p class="feature__oppe">
+        Når du flytter ind hos Vores Bolig, flytter du ind i et alment
+        boligselskab, hvor boligerne drives uden profit. Huslejen
+        dækker kun drift og vedligeholdelse, hvilket giver en fair og
+        stabil økonomi for beboerne. Vores Bolig udlejer almene boliger
+        i Frederikssund, Halsnæs, Egedal, Ballerup og Gribskov og
+        arbejder for at skabe trygge, velfungerende rammer i alle
+        deres afdelinger.
+      </p>
+
+      <p class="feature__nede">
+        Vores Bolig er selvadministrerende og står for den daglige drift
+        og service. Udlejning og ventelister håndteres i samarbejde med
+        Boligselskabet Sjælland, og boligsøgning foregår derfor via
+        bosj.dk. Samarbejdet sikrer en effektiv og nærværende
+        administration med fokus på beboernes behov.
+      </p>
+    </div>
+  </div>
+
+  <h2>DERFOR<br>ALMENE</h2>
+
+  <div class="streg"></div>
+
+    <div class="feature__wrap">
+    <div class="feature__number">02</div>
+
+    <div class="feature__content">
+      <p class="feature__title">Fordele</p>
+
+      <p class="feature__nede_margin">
+        At bo i en almen bolig giver dig en tryg og stabil hverdag. Her slipper du for mange af de økonomiske og praktiske bekymringer, der ofte følger med at eje en bolig, og får i stedet klare rammer, stabil husleje og mulighed for indflydelse på dit eget boligmiljø. Her er nogle af fordelene ved at bo i en almen bolig:
+      </p>
+    </div>
+  </div>
+
+<Box
+number="1"
+  title="Ingen ejendomsværdiskat"
+  lines={[
+    "Du slipper for ejendomsværdiskat og mister ikke penge, hvis ejendomspriserne er faldet, den dag du vil fraflytte dit lejemål.",
+  ]}
+/>
+
+<Box
+number="2"
+  title="Ingen vedligeholdelser"
+  lines={[
+    "Du skal ikke vedligeholde bygninger, grønne områder, døre vinduer, vandhaner, radiatorer o. lign. Det gør vi for dig.",
+  ]}
+/>
+
+<Box
+number="3"
+  title="Ingen bygningsforsikring"
+  lines={[
+    "Du slipper for at tegne en bygningsforsikring. Du skal dog selv tegne en indboforsikring, vhis din ejendele skal være dækket i tilfælde af brand, tyveri m.v.",
+  ]}
+/>
+
+<Box
+number="4"
+  title="Ingen ekstraudgifter"
+  lines={[
+    "Du får ingen ekstraudgifter, hvis toilettet går i stykker, eller taget bliver utæt.",
+  ]}
+/>
+
+<Box
+number="5"
+  title="Huslejen dækker"
+  lines={[
+    "Huslejen dækker hele din boligudgift, bortset fra forbrugsafgifter.",
+  ]}
+/>
+
+<Box
+number="6"
+  title="Tryghed"
+  lines={[
+    "Du får tryghed i hverdagen.",
+  ]}
+/>
+
+<Box
+number="7"
+  title="Indflydelse"
+  lines={[
+    "Du får indflydelse på ejendommens drift via beboerdemokratiet.",
+  ]}
+/>
+
+<Box
+number="8"
+  title="Boligsikring og indskudslån"
+  lines={[
+    "Du kan, hvis du har, eller får behov for det, søge boligsikring og indskudslån hos kommunen.",
+  ]}
+/>
+
+  <h2>FÆLLES<br>STEMME</h2>
+
+    <div class="streg"></div>
+
+
+  <div class="feature__wrap">
+    <div class="feature__number">03</div>
+
+    <div class="feature__content">
+      <p class="feature__title">Beboerdemokrati</p>
+
+      <p class="feature__oppe">
+        I en almen bolig har du som beboer gode muligheder for medbestemmelse. Det er en grundlæggende del af almene boliger, at beboerne kan få indflydelse på deres egne boligforhold gennem beboerdemokratiet.
+      </p>
+
+      <p class="feature__oppe">
+        Hos Vores Bolig kan du være med til at præge din afdelings drift og udvikling ved at deltage i afdelingsmøder eller stille op til afdelingsbestyrelsen. Afdelingsbestyrelsen repræsenterer beboerne i dialogen med boligselskabet, og sammen skaber de rammen for et velfungerende boligmiljø.
+      </p>
+
+            <p class="feature__nede">
+        Derudover er der en organisationsbestyrelse og et repræsentantskab, som samler repræsentanter fra alle afdelinger og træffer overordnede beslutninger. Hvor meget du ønsker at engagere dig, er helt op til dig. Beboerdemokratiet er et tilbud til alle, der vil være med til at forme hverdagen i deres boligafdeling.
+      </p>
+
+    </div>
+  </div>
+
+</section>
+
+<style>
+    section {
+        margin: 8px;
+    }
+
+h1 {
+    font-size: 40px;
+    font-family: "Whyte Inktrap";
+    font-weight: 500;
+    line-height: 96%;
+    margin-bottom: 48px;
+}
+
+.streg {
+    border-top: 1px solid #d9d9d9;
+    margin-bottom: 24px;
+}
+
+.feature__wrap {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+}
+
+.feature__number {
+  font-size: 16px;
+  font-family: "Whyte";
+}
+
+.feature__content {
+  margin-bottom: 32px;
+}
+
+.feature__title {
+  font-size: 16px;
+  font-family: "Whyte";
+  font-weight: 400;
+  margin-bottom: 32px;
+}
+
+.feature__oppe {
+  font-size: 16px;
+  font-family: "Whyte";
+  margin-bottom: 24px;
+}
+
+.feature__nede {
+  font-size: 16px;
+  font-family: "Whyte";
+}
+
+h2 {
+    font-size: 64px;
+    font-family: "Whyte Inktrap";
+    font-weight: 500;
+    line-height: 96%;
+    margin-top: 120px;
+    margin-bottom: 48px;
+}
+
+.feature__nede_margin {
+  font-size: 16px;
+  font-family: "Whyte";
+  margin-bottom: 80px;
+}
+</style>
+
+  <Footer />
+</BaseLayout>
