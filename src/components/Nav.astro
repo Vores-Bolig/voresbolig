@@ -4,7 +4,9 @@ const currentPath = Astro.url.pathname;
 ---
 
 <nav class="nav" style={`--nav-color: ${color}`}>
+    <a href="/">
   <img src={logo} alt="Logo" class="logo logo--nav" />
+  </a>
 
   <button class="burger" type="button" aria-label="Open menu" aria-expanded="false">
     <span></span>
@@ -99,6 +101,7 @@ const currentPath = Astro.url.pathname;
   align-items: center;
   margin-top: 0.5rem;
   margin-inline: 0.5rem;
+  margin-bottom: 60px;
 }
 
 .logo {
