@@ -22,7 +22,7 @@ const {
 } = Astro.props;
 
 
-const normalizedLines: Line[] = lines.map((l) =>
+const normalizedLines: Line[] = lines.map((l: string | Line) =>
   typeof l === "string" ? { text: l } : l
 );
 ---
@@ -45,6 +45,8 @@ const normalizedLines: Line[] = lines.map((l) =>
   </div>
 </section>
 
+
+
 <script is:inline>
   const items = document.querySelectorAll('.item');
 
@@ -62,7 +64,6 @@ const normalizedLines: Line[] = lines.map((l) =>
     background: #FBFBFB;
     margin: 0;
     padding: 0;
-    min-height: 844px;
   }
 
   .box {
@@ -90,6 +91,11 @@ const normalizedLines: Line[] = lines.map((l) =>
     border: none;
     text-align: left;
   }
+  
+  .boxes span:nth-child(2) {
+  flex: 1;
+  text-align: center;
+}
 
   .nr { width: 24px; }
   .ttl { flex: 1; }
