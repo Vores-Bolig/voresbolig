@@ -1,235 +1,256 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro"
-import Nav from "../components/Nav.astro"
-import Footer from "../components/Footer.astro"
----
-<BaseLayout> 
-  <section class="hero">
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Nav from "../components/Nav.astro";
+import Footer from "../components/Footer.astro";
 
+
+const supabaseUrl = "https://invkqrczmevlsbzdnlja.supabase.co";
+const supabaseKey = "sb_publishable_c5vkkFb_XH0fhn9JCO6Dtg_wQ9vMSiY";
+
+type Lokale = {
+  id: number;
+  title: string;
+  city: string;
+  image_url: string;
+  price_weekday: number | null;
+};
+
+let featured: Lokale[] = [];
+
+try {
+
+  const titles = [
+    "DET LILLE FÆLLESHUS",
+    "SØPAVILLONEN",
+    "ELMEGÅRDEN",
+  ];
+
+  const titleFilter = titles.map((t) => `"${t}"`).join(",");
+
+  const res = await fetch(
+    `${supabaseUrl}/rest/v1/Lokaler?select=id,title,city,image_url,price_weekday&title=in.(${encodeURIComponent(titleFilter)})`,
+    {
+      headers: {
+        apikey: supabaseKey,
+        Authorization: `Bearer ${supabaseKey}`,
+      },
+    }
+  );
+
+  if (!res.ok) {
+    console.error("Supabase index fetch error", res.status, await res.text());
+  } else {
+    featured = await res.json();
+  }
+} catch (err) {
+  console.error("Supabase index fetch failed", err);
+}
+
+function formatPrice(price: number | null | undefined) {
+  if (price == null) return "";
+  return new Intl.NumberFormat("da-DK").format(price);
+}
+
+
+const order = ["DET LILLE FÆLLESHUS", "SØPAVILLONEN", "ELMEGÅRDEN"];
+featured.sort((a, b) => order.indexOf(a.title) - order.indexOf(b.title));
+---
+
+<BaseLayout>
+  <section class="hero">
     <div class="hero__nav">
-    <Nav color="#FBFBFB" logo="/logo_hvid.webp"/>
+      <Nav color="#FBFBFB" logo="/logo_hvid.webp" />
     </div>
 
-    <img src="/display.webp" alt="Bygning" class="hero__img"/>
+    <img src="/display.webp" alt="Bygning" class="hero__img" />
     <div class="hero__overlay"></div>
 
-   <div class="hero__content">
+    <div class="hero__content">
+      <div class="hero__top">
+        <div class="hero__meta">/VB</div>
+        <div class="hero__line"></div>
+      </div>
 
-  <div class="hero__top">
-    <div class="hero__meta">/VB</div>
-    <div class="hero__line"></div>
-  </div>
+      <p class="hero__text">
+        Jeres boligselskab, der administrerer og udlejer almene boliger og lokaler til beboere.
+      </p>
 
-    <p class="hero__text">
-      Jeres boligselskab, der administrerer og udlejer
-      almene boliger og lokaler til beboere.
-     </p>
+      <a href="/kontakt" class="hero__link">Kontakt →</a>
 
-     <a href="/kontakt" class="hero__link">Kontakt →</a>
-
-  <h1 class="hero__title">
-    HJEM<br />
-    SKABER<br />
-    NÆRHED
-  </h1>
-</div>
+      <h1 class="hero__title">
+        HJEM<br />
+        SKABER<br />
+        NÆRHED
+      </h1>
+    </div>
   </section>
 
-
   <section class="sek_to">
-   <p>HJEMLIGHED FORMER HELE VORES ARBEJDE, FRA ANKOMSTENS RO TIL HVERDAGENS RYTME.</p>
-   <img src="bolig.webp" alt="bolig billeder">
+    <p>HJEMLIGHED FORMER HELE VORES ARBEJDE, FRA ANKOMSTENS RO TIL HVERDAGENS RYTME.</p>
+    <img src="bolig.webp" alt="bolig billeder" />
   </section>
 
   <section class="organisationen">
     <div class="organisationen__content">
-    <div class="organisationen__label">Organisationen</div>
+      <div class="organisationen__label">Organisationen</div>
 
-    <p class="organisationen__text">
-      Frederikssund, som administrerer og udlejer boliger til mennesker i alle
-      livssituationer. Som en non-profit organisation arbejder de efter et klart
-      formål: at skabe gode, trygge og økonomisk tilgængelige boliger for deres
-      beboere.
-    </p>
+      <p class="organisationen__text">
+        Frederikssund, som administrerer og udlejer boliger til mennesker i alle livssituationer. Som en non-profit organisation arbejder de efter et klart formål: at skabe gode, trygge og økonomisk tilgængelige boliger for deres beboere.
+      </p>
 
-    <p class="organisationen__text">
-      Boligselskabet sikrer en stabil drift af deres afdelinger, vedligeholder
-      bygningerne og sørger for, at både nye og eksisterende beboere møder en
-      professionel og nærværende boligadministration.
-    </p>
+      <p class="organisationen__text">
+        Boligselskabet sikrer en stabil drift af deres afdelinger, vedligeholder bygningerne og sørger for, at både nye og eksisterende beboere møder en professionel og nærværende boligadministration.
+      </p>
 
-    <div class="organisationen__cta">
-      <h2>UDLEJ<br />LOKALER</h2>
-      <a href="/lokaler">ALLE LOKALER</a>→
+      <div class="organisationen__cta">
+        <h2>UDLEJ<br />LOKALER</h2>
+        <a href="/lokaler">ALLE LOKALER</a>→
+      </div>
     </div>
-  </div>
 
-  <div class="organisationen__divider"></div>
+    <div class="organisationen__divider"></div>
   </section>
 
   <section class="lokaleCards">
-  <article class="lokaleCard">
-    <a class="productLink" href="/lokale">
-    <img class="lokaleImg" src="/det_lille_fælleshus.webp" alt="Det lille fælleshus" />
-    </a>
-    <div class="lokaleMeta">
-      <div class="lokaleLeft">
-        <div class="lokaleName">DET LILLE FÆLLESHUS</div>
-        <div class="lokaleCity">BALLERUP</div>
-      </div>
-      <div class="lokalePrice">FRA 1.400 KR.</div>
-    </div>
-  </article>
+    {featured.map((l) => (
+      <article class="lokaleCard">
+        <a class="productLink" href={`/lokale/${l.id}`}>
+          <img class="lokaleImg" src={l.image_url} alt={l.title} />
+        </a>
 
-  <article class="lokaleCard">
-     <a class="productLink" href="/lokale">
-    <img class="lokaleImg" src="/soepavillonen.webp" alt="Søpavillonen" />
-    </a>
-    <div class="lokaleMeta">
-      <div class="lokaleLeft">
-        <div class="lokaleName">SØPAVILLONEN</div>
-        <div class="lokaleCity">BALLERUP</div>
-      </div>
-      <div class="lokalePrice">FRA 2.600 KR.</div>
-    </div>
-  </article>
+        <div class="lokaleMeta">
+          <div class="lokaleLeft">
+            <div class="lokaleName">{l.title}</div>
+            <div class="lokaleCity">{l.city?.toUpperCase()}</div>
+          </div>
 
-  <article class="lokaleCard">
-    <a class="productLink" href="/lokale">
-    <img class="lokaleImg" src="/elme.webp" alt="Elmegården" />
-    </a>
-    <div class="lokaleMeta">
-      <div class="lokaleLeft">
-        <div class="lokaleName">ELMEGÅRDEN</div>
-        <div class="lokaleCity">MELBY</div>
-      </div>
-      <div class="lokalePrice">FRA 1.600 KR.</div>
-    </div>
-  </article>
-</section>
+          <div class="lokalePrice">
+            {l.price_weekday ? `FRA ${formatPrice(l.price_weekday)} KR.` : ""}
+          </div>
+        </div>
+      </article>
+    ))}
+  </section>
 
-
-<Footer />
+  <Footer />
 </BaseLayout>
 
 <style>
-    
-    .hero {
-  position: relative;
-  height: 844px;
-  overflow: hidden;
-  color: #FBFBFB;
-}
+  
+  .hero {
+    position: relative;
+    height: 844px;
+    overflow: hidden;
+    color: #fbfbfb;
+  }
 
-.hero__nav {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 3;
-}
+  .hero__nav {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 3;
+  }
 
-.hero__img {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-.productLink {
-  display: block;
-  color: inherit;
-  text-decoration: none;
-}
+  .hero__img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
 
+  .productLink {
+    display: block;
+    color: inherit;
+    text-decoration: none;
+  }
 
-.hero__overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.35);
-  z-index: 1;
-}
+  .hero__overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.35);
+    z-index: 1;
+  }
 
-.hero__content {
-  position: relative;
-  z-index: 2;
-  padding-inline: 8px;
-  padding-top: 8.5rem;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-}
+  .hero__content {
+    position: relative;
+    z-index: 2;
+    padding-inline: 8px;
+    padding-top: 8.5rem;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
 
-.hero__top {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
+  .hero__top {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
 
-.hero__meta {
-  font-size: 1rem;
-  font-family: "Whyte Mono Inktrap";
-  opacity: 0.7;
-  padding-top: 10px; 
-  white-space: nowrap;
-  margin-top: 195px;
-}
-.hero__linewrap {
-  flex: 1;
-  min-width: 0;
-}
-.hero__line {
-  flex: 1;
-  height: 1px;
-  background: #FBFBFB;
-  margin-inline: -50px;
-  margin-top: 160px;
-}
+  .hero__meta {
+    font-size: 1rem;
+    font-family: "Whyte Mono Inktrap";
+    opacity: 0.7;
+    padding-top: 10px;
+    white-space: nowrap;
+    margin-top: 195px;
+  }
 
-.hero__text {
-  font-family: "Whyte";
+  .hero__line {
+    flex: 1;
+    height: 1px;
+    background: #fbfbfb;
+    margin-inline: -50px;
+    margin-top: 160px;
+  }
+
+  .hero__text {
+    font-family: "Whyte";
     margin-top: -1.4rem;
     font-size: 1.4rem;
     font-weight: 300;
     line-height: 1.4;
     max-width: 90%;
     text-indent: calc(5.5rem + 12px);
-}
+  }
 
-.hero__link {
-  margin-top: 1.5rem;
-  font-family: "Whyte";
-  font-weight: 300;
-  font-size: 1rem;
-  margin-top: 60px;
-  padding-left: 100px;
-  color: #FBFBFB;
-  text-decoration: none;
-}
+  .hero__link {
+    margin-top: 1.5rem;
+    font-family: "Whyte";
+    font-weight: 300;
+    font-size: 1rem;
+    margin-top: 60px;
+    padding-left: 100px;
+    color: #fbfbfb;
+    text-decoration: none;
+  }
 
-.hero__title {
-  margin-top: auto;
-  font-family: "Whyte Inktrap";
-  font-size: 4.8rem;
-  line-height: 0.90;
-  font-weight: 400;
-  text-transform: uppercase;
-  letter-spacing: -0.04rem;
-  margin-bottom: 0rem;
-}
-.hero > :global(nav) {
-  position: relative;
-  z-index: 1000;
-}
+  .hero__title {
+    margin-top: auto;
+    font-family: "Whyte Inktrap";
+    font-size: 4.8rem;
+    line-height: 0.9;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: -0.04rem;
+    margin-bottom: 0rem;
+  }
 
-.sek_to {
+  .hero > :global(nav) {
+    position: relative;
+    z-index: 1000;
+  }
+
+  .sek_to {
     height: 600px;
     padding: 8px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    background: #FBFBFB;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.15); 
+    background: #fbfbfb;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.15);
   }
 
   .sek_to p {
@@ -248,69 +269,70 @@ import Footer from "../components/Footer.astro"
     margin-bottom: 35px;
     margin-top: 35px;
   }
+
   .organisationen {
-  height: 540px;
-  padding: 16px 8px 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  background: #FBFBFB;
-}
+    height: 540px;
+    padding: 16px 8px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: #fbfbfb;
+  }
 
-.organisationen__content {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
+  .organisationen__content {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
 
-.organisationen__label {
-  font-family: "Whyte";
-  font-size: 16px;
-  color: #040404;
-}
+  .organisationen__label {
+    font-family: "Whyte";
+    font-size: 16px;
+    color: #040404;
+  }
 
-.organisationen__text {
-  font-family: "Whyte";
-  font-size: 16px;
-  line-height: 1.2;
-  color: #040404;
-  margin: 0;
-}
+  .organisationen__text {
+    font-family: "Whyte";
+    font-size: 16px;
+    line-height: 1.2;
+    color: #040404;
+    margin: 0;
+  }
 
-.organisationen__cta {
-  margin-top: 105px;
-}
+  .organisationen__cta {
+    margin-top: 105px;
+  }
 
-.organisationen__cta h2 {
-  font-family: "Whyte Inktrap";
-  font-size: 64px;
-  font-weight: 400;
-  line-height: 0.95;
-  color: #040404;
-  margin: 0;
-  text-transform: uppercase;
-}
+  .organisationen__cta h2 {
+    font-family: "Whyte Inktrap";
+    font-size: 64px;
+    font-weight: 400;
+    line-height: 0.95;
+    color: #040404;
+    margin: 0;
+    text-transform: uppercase;
+  }
 
-.organisationen__cta a {
-  display: inline-block;
-  margin-top: 8px;
-  font-family: "Whyte";
-  font-size: 12px;
-  color: #040404;
-  text-decoration: underline;
-}
+  .organisationen__cta a {
+    display: inline-block;
+    margin-top: 8px;
+    font-family: "Whyte";
+    font-size: 12px;
+    color: #040404;
+    text-decoration: underline;
+  }
 
-.organisationen__divider {
-  height: 1px;
-  background: rgba(0, 0, 0, 0.15);
-}
+  .organisationen__divider {
+    height: 1px;
+    background: rgba(0, 0, 0, 0.15);
+  }
 
-.lokaleCards {
+  .lokaleCards {
     height: 1268px;
     margin-top: 20px;
     padding: 0.5rem;
     background: #fbfbfb;
-    border-bottom: 1px solid rgba(4, 4, 4, 0.15); 
+    border-bottom: 1px solid rgba(4, 4, 4, 0.15);
   }
 
   .lokaleCard {
@@ -322,7 +344,7 @@ import Footer from "../components/Footer.astro"
     height: 335px;
     object-fit: cover;
     display: block;
-    background: #FBFBFB;
+    background: #fbfbfb;
   }
 
   .lokaleMeta {
@@ -345,5 +367,4 @@ import Footer from "../components/Footer.astro"
   .lokaleCity {
     opacity: 0.5;
   }
-
 </style>

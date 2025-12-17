@@ -3,6 +3,43 @@ import BaseLayout from "../layouts/BaseLayout.astro"
 import Product from "../components/Product.astro"
 import Nav from "../components/Nav.astro";
 import Footer from "../components/Footer.astro";
+
+type Lokale = {
+  id: number;
+  title: string;
+  city: string;
+  price_weekday: number | null;
+  max_persons: number | null;
+  can_rent: string | null;
+  image_url: string | null;
+};
+
+let rows: Lokale[] = [];
+
+try {
+  const res = await fetch(
+    "https://invkqrczmevlsbzdnlja.supabase.co/rest/v1/Lokaler?select=id,title,city,price_weekday,max_persons,can_rent,image_url&order=id.asc",
+    {
+      headers: {
+        apikey: "sb_publishable_c5vkkFb_XH0fhn9JCO6Dtg_wQ9vMSiY",
+        Authorization: "Bearer sb_publishable_c5vkkFb_XH0fhn9JCO6Dtg_wQ9vMSiY",
+      },
+    }
+  );
+
+  if (!res.ok) {
+    console.error("Supabase lokaler error", res.status, await res.text());
+  } else {
+    rows = await res.json();
+  }
+} catch (err) {
+  console.error("Supabase lokaler fetch failed", err);
+}
+
+function formatPrice(price: number | null | undefined) {
+  if (price == null) return "";
+  return new Intl.NumberFormat("da-DK").format(price);
+}
 ---
 
 <BaseLayout> 
@@ -10,7 +47,6 @@ import Footer from "../components/Footer.astro";
 <main class="page"> 
 <h1 class="lokaler">7 LOKALER</h1>
 <p class="sorter"> SORTER EFTER: ANBEFALET </p>
-
 
 <div class="desktop-labels">
   <span>BY:</span>
@@ -21,83 +57,24 @@ import Footer from "../components/Footer.astro";
 
 <hr class="line"> </hr>
 
-<div class= "product-wrapper">
- <a class="productLink" href="/lokale">
-<Product
-  image="/centerhuset.webp"
-  by="Frederikssund"
-  pris="Fra 1.300 kr."
-  personer="Max. 30"
-  kanLejes="Alle"
-  />
-  </a>
-
-  <a class="productLink" href="/lokale"> 
-  <Product 
-  image="/det_lille_fælleshus.webp"
-  by="Ballerup"
-  pris="Fra 1.400 kr."
-  personer="Max. 20"
-  kanLejes="Beboere"
-  />
-  </a>
-
-  <a class="productLink" href="/lokale"> 
-  <Product 
-  image="/bispevangen.webp"
-  by="Ballerup"
-  pris="Fra 3.100 kr."
-  personer="Max. 50"
-  kanLejes="Beboere"
-  />
-  </a>
-
-  <a class="productLink" href="/lokale">
-  <Product 
-  image="/elme.webp"
-  by="Melby"
-  pris="Fra 1.600kr."
-  personer="Max. 50"
-  kanLejes="Beboere"
-  />
-  </a>
-
-  <a class="productLink" href="/lokale"> 
-  <Product 
-  image="/gefionparken.webp"
-  by="Frederikssund"
-  pris="Fra 1.800 kr."
-  personer="Max. 40"
-  kanLejes="Beboere"
-  />
-  </a>
-  <a class="productLink" href="/lokale">
-  <Product 
-  image="/harager.webp"
-  by="Helsinge"
-  pris="Fra 2.800 kr."
-  personer="Max. 40"
-  kanLejes="Beboere"
-  />
-  </a>
-
-  <a class="productLink" href="/lokale"> 
-  <Product 
-  image="/soepavillonen.webp"
-  by="Ballerup"
-  pris="Fra 6.100 kr."
-  personer="Max. 40"
-  kanLejes="Alle"
-  />
-  </a>
+<div class="product-wrapper">
+  {rows.map((row) => (
+    <a class="productLink" href={`/lokale/${row.id}`}>
+      <Product
+        image={row.image_url ?? ""}
+        by={row.city ?? ""}
+        pris={row.price_weekday != null ? `Fra ${formatPrice(row.price_weekday)} kr.` : ""}
+        personer={row.max_persons != null ? `Max. ${row.max_persons}` : ""}
+        kanLejes={row.can_rent ?? ""}
+      />
+    </a>
+  ))}
 </div>
 </main>
 <Footer />
 </BaseLayout>
 
-
 <style>
-
  .page{
     margin-inline: 8px;
  }
@@ -131,12 +108,12 @@ import Footer from "../components/Footer.astro";
     }
 
     .line {
-        border: none; /* fjerner standard */
+        border: none; 
         height: 0.1rem;
         background-color: #dddd;
     }
 
-    /* Mobile: Default styling for all cards */
+  
     .product-wrapper :global(.card .label),
     .product-wrapper :global(.card .value) {
         font-family: "Whyte Inktrap";
@@ -146,12 +123,11 @@ import Footer from "../components/Footer.astro";
         display: none;
     }
 
-    /* ========================= */
-    /* ===== DESKTOP ONLY ===== */
-    /* ========================= */
 
     @media (min-width: 750px) {
-
+.page {
+    margin-inline: 24px;
+}
 .desktop-labels {
     display: grid;
     grid-template-columns: 160px 160px 160px 1fr;
@@ -167,11 +143,9 @@ import Footer from "../components/Footer.astro";
 
 
    
-
-        /* Hele kortet: tekst venstre, billede højre */
         .product-wrapper :global(.card) {
             display: grid;
-            grid-template-columns: 1fr ;  /* tekst til venstre, billede til højre */
+            grid-template-columns: 1fr ;  
             gap: 40px;
             align-items: center;
             padding: 32px 0;
@@ -179,7 +153,7 @@ import Footer from "../components/Footer.astro";
         }
         
 
-        /* Fjern mobil-stacking */
+        
         .product-wrapper :global(.content) {
             width: 100%;
         }
@@ -189,7 +163,7 @@ import Footer from "../components/Footer.astro";
             text-align: right;
         }
 
-        /* Info-rækken → 4 kolonner */
+        
         .product-wrapper :global(.info) {
             display: grid;
             grid-template-columns: 160px 160px 160px 1fr;
@@ -198,7 +172,7 @@ import Footer from "../components/Footer.astro";
             margin-bottom: 16px;
         }
 
-        /* Labels (BY, PRIS osv.) */
+        
         .product-wrapper :global(.label) {
             font-size: 11px;
             letter-spacing: 0.06em;
@@ -209,7 +183,7 @@ import Footer from "../components/Footer.astro";
 
         
 
-        /* Values (Frederikssund, Fra 1.300 kr.) */
+        
         .product-wrapper :global(.value) {
             font-size: 14px;
             line-height: 1.4;
@@ -218,7 +192,7 @@ import Footer from "../components/Footer.astro";
             top: -240px;
         }
 
-        /* Billedet */
+        
         .product-wrapper :global(.image) {
             width: 260px;
             height: 200px;
@@ -228,8 +202,4 @@ import Footer from "../components/Footer.astro";
         }
 
     }
-
-
-
-
 </style>
