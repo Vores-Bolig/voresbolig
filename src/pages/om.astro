@@ -5,22 +5,26 @@ import Footer from "../components/Footer.astro";
 import Nav from "../components/Nav.astro";
 import Footerd from "../components/Footerd.astro";
 import Navd from "../components/Navd.astro";
+import Team from "../components/Team.astro";
 ---
 <BaseLayout>
 <Nav />
 <Navd />
-<section>
+<section class="page">
 
 <h1>ARBEJDET OG<br>MENNESKERNE<br>BAG VORES BOLIG</h1>
 
 <div class="streg"></div>
 
+<div class="omIntro"> 
 <p class="undertitel">Om os</p>
-
+<div class="omText"> 
 <p class="text_oppe">Vores Bolig er et alment boligselskab, der arbejder for at skabe trygge og bæredygtige rammer for mennesker i alle livsfaser. Vi udlejer boliger og lokaler med fokus på kvalitet, tryghed, stabilitet og en økonomi, der er til at betale, fordi vores arbejde bygger på et non-profit princip, hvor beboernes behov altid kommer først. </p>
 
 <p class="text_under">Vi står for den daglige drift af vores boligafdelinger og sikrer, at bygningerne bliver passet godt på. Samtidig lægger vi stor vægt på nærværende service og tydelig kommunikation, så både nye og nuværende beboere oplever professionel hjælp og tryghed i deres hverdag hos os.</p>
-
+</div>
+</div>
+<div class="image-pair"> 
 <div class="container_venstre">
 <img class="billede" src="/public/poster.webp" alt="Poster">
 </div>
@@ -28,15 +32,27 @@ import Navd from "../components/Navd.astro";
 <div class="container_right">
 <img class="billede" src="/public/frame.webp" alt="Poster">
 </div>
+</div>
 
-<h2>VORES<br>FAMILIE</h2>
+<div class="familieSection">
+  <h2 class="familieTitle">
+    <span>VORES</span>
+    <span>FAMILIE</span>
+  </h2>
 
-<div class="streg"></div>
+  <div class="streg"></div>
 
-<p class="undertitel">Team</p>
-
-<p class="text_under">Vores Bolig består af over 60 medarbejdere, som hver dag arbejder for at skabe trygge, stabile og velfungerende hjem for vores beboere. Nogle arbejder med ledelse, planlægning og udvikling af nye projekter, mens andre sørger for den daglige drift, koordinering og beboerservice. Vi har teams, der hjælper ved renoveringer og genhusning, og servicehold der passer udeområder, bygninger og tekniske installationer. Sammen tager vi hånd om både de store linjer og de små detaljer, så vores beboere får en god oplevelse</p>
-
+  <div class="familieGrid">
+    <p class="undertitel">Team</p>
+    <p class="text_under">
+      Vores Bolig består af over 60 medarbejdere, som hver dag arbejder for at skabe trygge, stabile og velfungerende hjem for vores beboere. Nogle arbejder med ledelse, planlægning og udvikling af nye projekter, mens andre sørger for den daglige drift, koordinering og beboerservice. Vi har teams, der hjælper ved renoveringer og genhusning, og servicehold der passer udeområder, bygninger og tekniske installationer. Sammen tager vi hånd om både de store linjer og de små detaljer, så vores beboere får en god oplevelse
+    </p>
+  </div>
+</div>
+<div class="team-desktop"> 
+<Team />
+ </div>
+<div class="team-mobile"> 
 <Box
 number="01"
   title="Direktør"
@@ -206,6 +222,7 @@ number="11"
     { text: "Ballerup", dim: true },
   ]}
 />
+</div>
 
 </section>
 
@@ -281,6 +298,13 @@ h2 {
 :global(.navd) { display: none !important; }
 :global(.nav)  { display: flex !important; }
 
+.team-desktop {
+  display: none;
+}
+
+.team-mobile {
+  display: block;
+}
 @media (min-width: 750px) {
   :global(.footerDesktop) {
     display: block;
@@ -291,7 +315,140 @@ h2 {
   }
   :global(.navd) { display: grid !important; }
   :global(.nav)  { display: none !important; }
+
+  .team-desktop {
+    display: block;
+    margin-bottom: 300px;
+  }
+
+  .team-mobile {
+    display: none;
+  }
+
+  .page {
+    margin-inline: 24px;
+  }
+
+  .streg {
+    margin-inline: -24px;
+  }
+  h1 {
+    font-size: 72px;
+    font-weight: 400;
+    margin-bottom: 80px;
+  }
+
+  .omIntro {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    column-gap: 80px;
+    align-items: start;
+    margin-top: 24px;
+  }
+
+  .undertitel {
+    font-size: 22px;
+    margin: 0;
+    font-weight: 300;
+  }
+
+  .omText {
+    max-width: 720px;  
+    margin-left: auto; 
+    font-weight: 300;
+    margin-bottom: 50px;
+  }
+
+  .text_oppe,
+  .text_under {
+    font-size: 22px;
+    line-height: 1.3;
+    margin: 0;
+  }
+
+  .text_oppe { 
+    margin-bottom: 40px; 
+    text-indent: 112px;
+  }
+.image-pair {
+    display: grid;
+    grid-template-columns: 571px 571px; 
+    justify-content: space-between;     
+    align-items: start;
+    padding-inline: 135px;              
+    margin-top: 120px;
+    gap: 15px;
+  }
+
+  .billede {
+    width: 571px;
+    height: 762px;
+    object-fit: cover;
+    display: block;
+  }
+
+  
+  .container_venstre {
+    grid-column: 2;
+    justify-self: end;
+    transform: translateY(0);
+  }
+
+ 
+  .container_right {
+    grid-column: 1;
+    justify-self: start;
+    transform: translateY(-220px); 
+  }
+.familieSection {
+    margin-top: 60px;
+    margin-bottom: 220px;
+  }
+
+  .familieTitle {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-size: 120px;
+    font-family: "Whyte Inktrap";
+    font-weight: 400;
+    line-height: 0.95;
+    margin: 0 0 24px 0;
+  }
+
+  
+  .familieSection .streg {
+    margin-bottom: 25px;
+    margin-top: -10px;
+  }
+
+  .familieGrid {
+    display: grid;
+    grid-template-columns: 160px 1fr;
+    column-gap: 120px;
+    align-items: start;
+  }
+
+  
+  .familieGrid .undertitel {
+    font-size: 22px;
+    margin: 0;
+    font-weight: 300;
+  }
+
+  .familieGrid .text_under {
+    font-size: 23px;
+    line-height: 1.35;
+    margin: 0;
+    max-width: 760px;
+    margin-left: auto; 
+    text-indent: 112px;
+    font-weight: 300;
+  }
+
+  
 }
+
 </style>
 
 
