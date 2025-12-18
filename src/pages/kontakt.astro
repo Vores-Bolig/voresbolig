@@ -2,9 +2,12 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Footer from "../components/Footer.astro";
 import Nav from "../components/Nav.astro"
+import Footerd from "../components/Footerd.astro";
+import Navd from "../components/Navd.astro";
 ---
 <BaseLayout>
   <Nav />
+  <Navd />
     <section>
 <h1 class="title">
   <span class="kontakt">KONTAKT</span>
@@ -106,18 +109,35 @@ width: 374px;
 .title span{
   display: block;
 }
+:global(.footerDesktop) {
+  display: none;
+}
+
+:global(.footerMobile) {
+  display: block;
+}
+:global(.navd) { display: none !important; }
+:global(.nav)  { display: flex !important; }
 
 @media (min-width: 750px) {
 
+:global(.footerDesktop) {
+    display: block;
+  }
+
+  :global(.footerMobile) {
+    display: none;
+  }
+  :global(.navd) { display: grid !important; }
+  :global(.nav)  { display: none !important; }
     section{
-    margin: 8px;
+    margin-inline: 24px;
   }
 
   h1 {
     font-size: 120px;
     font-family: "Whyte Inktrap";
     font-weight: 325;
-    padding-top: 20px;
     margin-bottom: 10px;
 }
 .title {
@@ -174,4 +194,5 @@ width: 374px;
 
 
 <Footer />
+<Footerd />
 </BaseLayout>

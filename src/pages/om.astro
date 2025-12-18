@@ -3,9 +3,12 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import Box from "../components/Box.astro";
 import Footer from "../components/Footer.astro";
 import Nav from "../components/Nav.astro";
+import Footerd from "../components/Footerd.astro";
+import Navd from "../components/Navd.astro";
 ---
 <BaseLayout>
 <Nav />
+<Navd />
 <section>
 
 <h1>ARBEJDET OG<br>MENNESKERNE<br>BAG VORES BOLIG</h1>
@@ -268,10 +271,30 @@ h2 {
     line-height: 96%;
     margin-bottom: 48px;
 }
+:global(.footerDesktop) {
+  display: none;
+}
 
+:global(.footerMobile) {
+  display: block;
+}
+:global(.navd) { display: none !important; }
+:global(.nav)  { display: flex !important; }
 
+@media (min-width: 750px) {
+  :global(.footerDesktop) {
+    display: block;
+  }
+
+  :global(.footerMobile) {
+    display: none;
+  }
+  :global(.navd) { display: grid !important; }
+  :global(.nav)  { display: none !important; }
+}
 </style>
 
 
 <Footer />
+<Footerd />
 </BaseLayout>

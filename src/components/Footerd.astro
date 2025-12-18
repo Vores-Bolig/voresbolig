@@ -1,0 +1,214 @@
+---
+const currentPath = Astro.url.pathname;
+
+const isActive = (path: string): boolean => {
+  if (path === "/") {
+    return currentPath === "/" || currentPath === "/index";
+  }
+  return currentPath === path;
+};
+---
+
+<footer class="footerDesktop">
+  <div class="footerTop">
+    <h2 class="footerBrand">
+      <span>VORES</span>
+      <span>BOLIG</span>
+    </h2>
+  </div>
+
+  <div class="footerLine"></div>
+
+  <div class="footerGrid">
+    <div class="footerCol">
+      <p class="footerLabel">KONTAKT</p>
+      <div class="footerText">
+        <p>Vores Bolig</p>
+        <p>Heimdalsvej 7C</p>
+        <p>3600 Frederikssund</p>
+        <br />
+        <p>vb@voresbolig.dk</p>
+        <p>43 40 36 00</p>
+      </div>
+    </div>
+
+    <div class="footerCol">
+      <p class="footerLabel">MENU</p>
+      <div class="footerText">
+        <p>
+          <a href="/" class:list={{ footerLink: isActive("/") }}>
+            Forside
+          </a>
+        </p>
+        <p>
+          <a href="/lokaler" class:list={{ footerLink: isActive("/lokaler") }}>
+            Lokaler
+          </a>
+        </p>
+        <p>
+          <a href="/info" class:list={{ footerLink: isActive("/info") }}>
+            Info
+          </a>
+        </p>
+        <p>
+          <a href="/om" class:list={{ footerLink: isActive("/om") }}>
+            Om os
+          </a>
+        </p>
+        <p>
+          <a href="/kontakt" class:list={{ footerLink: isActive("/kontakt") }}>
+            Kontakt
+          </a>
+        </p>
+      </div>
+    </div>
+
+    <div class="footerCol">
+      <p class="footerLabel">SOCIALE MEDIER</p>
+      <div class="footerText">
+        <p>Facebook</p>
+        <p>Instagram</p>
+        <p>LinkedIn</p>
+      </div>
+    </div>
+
+    <div class="footerCol">
+      <p class="footerLabel">CITAT</p>
+      <div class="footerText footerQuote">
+        <p>“Vi skaber rammerne, du</p>
+        <p>skaber hjemmet”</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="footerBottom">
+    <p>© Vores Bolig 2025</p>
+    <p>
+     Privatlivspolitik
+    </p>
+    <p class="backToTop">Tilbage til toppen</p>
+  </div>
+</footer>
+
+<script>
+  document.querySelector(".backToTop")?.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+</script>
+
+
+    <style>
+  .footerDesktop {
+  height: 812px;
+  background: #5D4E46;
+  color: #FBFBFB;
+  position: relative;
+  overflow: hidden;
+}
+
+
+.footerTop {
+  padding: 8px 24px 0 24px;
+}
+
+.footerBrand {
+  margin: 0;
+  font-family: "Whyte Inktrap", sans-serif;
+  font-size: 184px;
+  font-weight: 400;
+  line-height: 0.9;
+  letter-spacing: -0.02em;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+
+.footerLine {
+  height: 1px;
+  width: 100%;
+  background: #FBFBFB;
+  margin-top: 80px;
+}
+
+
+.footerGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 48px;
+  padding: 20px 24px 0 24px;
+}
+
+.footerLabel {
+  margin: 0 0 16px 0;
+  font-family: "Whyte Mono Inktrap", monospace;
+  font-size: 16px;
+  font-weight: 300;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.footerText {
+  font-family: "Whyte Inktrap", sans-serif;
+  font-size: 24px;
+  font-weight: 300;
+  line-height: 1.25;
+  margin-top: 100px;
+}
+.footerText a {
+  color: #FBFBFB;
+  text-decoration: none;
+}
+.footerText a:visited {
+  color: #FBFBFB;
+}
+.footerText a.footerLink {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.footerText p {
+  margin: 0;
+  color: #FBFBFB;
+  text-decoration: none;
+}
+
+.footerLink {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.footerQuote {
+  font-style: italic;
+}
+
+
+.footerBottom {
+  position: absolute;
+  left: 24px;
+  right: 160px;
+  bottom: 24px;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: end;
+}
+
+.footerBottom p {
+  margin: 0;
+  font-family: "Whyte Inktrap", sans-serif;
+  font-size: 20px;
+  font-weight: 300;
+  color: #FBFBFB;
+}
+
+.footerBottom p:nth-child(2) {
+  text-align: left;
+}
+.footerBottom p:nth-child(3) {
+  text-align: right;
+}
+
+    </style>
+

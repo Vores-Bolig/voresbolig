@@ -2,6 +2,8 @@
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import Footer from "../../components/Footer.astro";
 import Nav from "../../components/Nav.astro";
+import Footerd from "../../components/Footerd.astro";
+import Navd from "../../components/Navd.astro";
 
 export async function getStaticPaths() {
   const res = await fetch(
@@ -37,6 +39,7 @@ function formatPrice(price: any) {
 
 <BaseLayout>
 <Nav />
+<Navd />
 <section>
 
 <div class="test">
@@ -146,8 +149,28 @@ margin-bottom: 24px;
   font-family: "Whyte";
   margin-bottom: 80px;
 }
+:global(.footerDesktop) {
+  display: none;
+}
+
+:global(.footerMobile) {
+  display: block;
+}
+:global(.navd) { display: none !important; }
+:global(.nav)  { display: flex !important; }
 
 @media (min-width: 750px) {
+
+:global(.footerDesktop) {
+    display: block;
+  }
+
+  :global(.footerMobile) {
+    display: none;
+  }
+  :global(.navd) { display: grid !important; }
+  :global(.nav)  { display: none !important; }
+
   section {
     margin: 24px;
   }
@@ -234,4 +257,5 @@ margin-bottom: 24px;
 </style>
 
 <Footer />
+<Footerd />
 </BaseLayout>
