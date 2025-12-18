@@ -5,13 +5,19 @@ import Footer from "../components/Footer.astro";
 import Nav from "../components/Nav.astro";
 import Footerd from "../components/Footerd.astro";
 import Navd from "../components/Navd.astro";
+import Infod from "../components/Infod.astro";
 ---
 
 <BaseLayout>
 <Nav />
 <Navd />
 <section>
-<h1>DIT SAMLEDE INFOUNIVERS HOS VORES BOLIG</h1>
+<h1 class="title-mobile">DIT SAMLEDE INFOUNIVERS HOS VORES BOLIG</h1>
+<h1 class="title-desktop">
+  DIT SAMLEDE<br />
+  INFORMATIONSUNIVERS<br />
+  HOS VORES BOLIG
+</h1>
 
 <div class="streg"></div>
 
@@ -41,7 +47,11 @@ import Navd from "../components/Navd.astro";
     </div>
   </div>
 
-  <h2>DERFOR<br>ALMENE</h2>
+ <h2 class="splitTitle">
+  <span>DERFOR</span>
+  <span>ALMENE</span>
+</h2>
+
 
   <div class="streg"></div>
 
@@ -56,7 +66,9 @@ import Navd from "../components/Navd.astro";
       </p>
     </div>
   </div>
-
+  <div class="infoDesktop">
+<Infod />
+</div>
 <Box
 number="1"
   title="Ingen ejendomsværdiskat"
@@ -121,7 +133,13 @@ number="8"
   ]}
 />
 
-  <h2>FÆLLES<br>STEMME</h2>
+<h2 class="h2-mobile">FÆLLES<br>STEMME</h2>
+
+<h2 class="h2-desktop splitTitle">
+  <span>FÆLLES</span>
+  <span>INDFLYDELSE</span>
+</h2>
+
 
     <div class="streg"></div>
 
@@ -136,7 +154,7 @@ number="8"
         I en almen bolig har du som beboer gode muligheder for medbestemmelse. Det er en grundlæggende del af almene boliger, at beboerne kan få indflydelse på deres egne boligforhold gennem beboerdemokratiet.
       </p>
 
-      <p class="feature__oppe">
+      <p class="feature__oppe no-indent">
         Hos Vores Bolig kan du være med til at præge din afdelings drift og udvikling ved at deltage i afdelingsmøder eller stille op til afdelingsbestyrelsen. Afdelingsbestyrelsen repræsenterer beboerne i dialogen med boligselskabet, og sammen skaber de rammen for et velfungerende boligmiljø.
       </p>
 
@@ -223,7 +241,13 @@ h2 {
 :global(.navd) { display: none !important; }
 :global(.nav)  { display: flex !important; }
 
-
+.title-desktop {
+  display: none;
+}
+.infoDesktop {
+  display: none;
+}
+.h2-desktop { display: none; }
 @media (min-width: 750px) {
   :global(.footerDesktop) {
     display: block;
@@ -234,6 +258,117 @@ h2 {
   }
   :global(.navd) { display: grid !important; }
   :global(.nav)  { display: none !important; }
+   :global(.card) {
+    display: none;
+  }
+   .h2-mobile { display: none; }
+  .h2-desktop { display: flex; }
+
+   .h2-desktop.splitTitle {
+    font-size: 110px;            
+    font-family: "Whyte Inktrap";
+    font-weight: 400;
+    line-height: 1.05;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-top: 120px;
+    margin-bottom: 5px;
+  }
+
+  .infoDesktop {
+    display: block;
+    margin-top: -180px;
+    transform: translateX(17px);
+    margin-bottom: 400px;
+  }
+
+   section {
+    margin-inline: 24px;
+  }
+
+   .title-mobile {
+    display: none;
+  }
+
+  .title-desktop {
+    display: block;
+    font-size: 72px;
+    font-family: "Whyte Inktrap";
+    font-weight: 400;
+    line-height: 1.05;
+    margin-bottom: 80px;
+  }
+  
+.no-indent {
+  text-indent: 0 !important;
+}
+  
+  .streg {
+    margin-left: -24px;
+    margin-right: -24px;
+    margin-bottom: 15px;
+  }
+
+  .feature__wrap {
+  display: grid;
+  grid-template-columns: 120px 1fr; /
+  column-gap: 80px;
+  align-items: start;
+  margin-bottom: 330px;
+}
+
+
+.feature__content {
+  display: grid;
+  grid-template-columns: 240px 1fr; 
+  column-gap: 80px;
+  margin-bottom: 0;
+}
+
+
+.feature__title {
+  grid-column: 1;
+  margin: 0;
+  font-size: 24px;
+  font-weight: 300;
+  transform: translateX(120px);
+}
+
+.feature__number {
+  font-size: 23px;      
+  font-family: "Whyte";
+  font-weight: 300;
+}
+
+.feature__oppe,
+.feature__nede,
+.feature__nede_margin {
+  grid-column: 2;
+  font-size: 23px;
+  font-weight: 300;
+  line-height: 1.45;
+  margin-top: 0;
+  max-width: 680px;
+  transform: translateX(275px);
+}
+
+.feature__oppe {
+  text-indent: 112px;
+}
+
+.splitTitle {
+  font-size: 110px;
+  display: flex;
+  font-weight: 400;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 5px;
+}
+
+.feature__nede_margin {
+  text-indent: 112px;
+}
+
 }
 </style>
 
