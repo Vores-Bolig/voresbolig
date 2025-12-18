@@ -133,6 +133,10 @@ width: 374px;
     section{
     margin-inline: 24px;
   }
+  .streg {
+    margin-left: -24px;
+    margin-right: -24px;
+  }
 
   h1 {
     font-size: 120px;
@@ -151,25 +155,25 @@ width: 374px;
   }
 
 .info-container {
-  display: grid;
-  grid-template-columns: 1fr 1fr; 
-  
+ display: grid;
+    grid-template-columns: 453px 670px; 
+    column-gap: 250px;
+    justify-content: start;
 }
 
 .info {
   font-size: 24px;
 }
   img {
-    width: 100%;
     width: 453px;
     height: 628px;
     object-fit: cover;
-    padding-left: 10px;
+    padding-left: 0;
   }
 
   .container {
-    display: block;
-    margin-bottom: 80px;
+    order: -1;         
+    margin-bottom: 250px; 
 }
 
   .contact {
@@ -180,12 +184,14 @@ width: 374px;
     font-size: 24px;
     margin-bottom: 64px;
     text-indent: 112px;
+    font-weight: 300;
     
   }
 
   .contact-info {
-    grid-template-columns: 80spx 1fr;
-    row-gap: 16px;
+    grid-template-columns: 80px 1fr;
+    row-gap: -5px;
+    font-weight: 300;
   }
 
 }

@@ -49,6 +49,7 @@ function formatPrice(price: number | null | undefined) {
 <Navd />
 <main class="page"> 
 <h1 class="lokaler">7 LOKALER</h1>
+<h1 class="lokaler_desk">7 UDLEJNINGS LOKALER</h1>
 <p class="sorter"> SORTER EFTER: ANBEFALET </p>
 
 <div class="desktop-labels">
@@ -97,6 +98,9 @@ function formatPrice(price: number | null | undefined) {
   text-decoration: none;
 }
 
+.lokaler_desk {
+  display: none;
+}
 
 
     .sorter {
@@ -137,7 +141,7 @@ function formatPrice(price: number | null | undefined) {
 :global(.nav)  { display: flex !important; }
 
     @media (min-width: 750px) {
-:global(.footerDesktop) {
+  :global(.footerDesktop) {
     display: block;
   }
 
@@ -147,15 +151,13 @@ function formatPrice(price: number | null | undefined) {
   :global(.navd) { display: grid !important; }
   :global(.nav)  { display: none !important; }
 
-.page {
-    margin-inline: 24px;
-}
-.desktop-labels {
+ .page { margin-inline: 24px; }
+
+  .desktop-labels {
     display: grid;
     grid-template-columns: 160px 160px 160px 1fr;
     column-gap: 32px;
     margin-bottom: 8px;
-
     font-family: "Whyte Inktrap";
     font-size: 11px;
     letter-spacing: 0.06em;
@@ -163,65 +165,63 @@ function formatPrice(price: number | null | undefined) {
     color: #000;
   }
 
+  .sorter{
+    text-align: right;
+    margin: 0 0 8px 0;
+  }
 
-   
-        .product-wrapper :global(.card) {
-            display: grid;
-            grid-template-columns: 1fr ;  
-            gap: 40px;
-            align-items: center;
-            padding: 32px 0;
-            border-bottom: 1px solid #e5e5e5;
-        }
-        
+  .product-wrapper :global(.card) {
+    display: grid;
+    grid-template-columns: 1fr;  
+    gap: 40px;
+    align-items: center;
+    padding: 32px 0;
+    border-bottom: 1px solid #e5e5e5;
+  }
 
-        
-        .product-wrapper :global(.content) {
-            width: 100%;
-        }
+  .product-wrapper :global(.content) {
+    width: 100%;
+  }
 
-        .sorter{
-            justify-self: end;
-            text-align: right;
-        }
+  .product-wrapper :global(.info) {
+    display: grid;
+    grid-template-columns: 160px 160px 160px 1fr;
+    column-gap: 32px;
+    row-gap: 4px;
+    margin-bottom: 16px;
+  }
 
-        
-        .product-wrapper :global(.info) {
-            display: grid;
-            grid-template-columns: 160px 160px 160px 1fr;
-            column-gap: 32px;
-            row-gap: 4px;
-            margin-bottom: 16px;
-        }
+  .product-wrapper :global(.label) {
+    display: none;
+  }
 
-        
-        .product-wrapper :global(.label) {
-            font-size: 11px;
-            letter-spacing: 0.06em;
-            text-transform: uppercase;
-            color: #666;
-            display: none;
-        }
+ 
+  .product-wrapper :global(.value) {
+    font-size: 14px;
+    line-height: 1.4;
+    color: #040404;
+    position: relative;
+    top: -240px;
+  }
 
-        
+  .product-wrapper :global(.image) {
+    width: 260px;
+    height: 200px;
+    justify-self: end;
+    background-size: cover;
+    background-position: center;
+  }
 
-        
-        .product-wrapper :global(.value) {
-            font-size: 14px;
-            line-height: 1.4;
-            color: #040404;
-            position: relative;
-            top: -240px;
-        }
-
-        
-        .product-wrapper :global(.image) {
-            width: 260px;
-            height: 200px;
-            justify-self: end;
-            background-size: cover;
-            background-position: center;
-        }
-
+  .lokaler {
+    display: none;
+  }
+  .lokaler_desk {
+    display: block;
+    font-family: "Whyte Inktrap";
+    font-size: 72px;
+    font-weight: 400; 
+    letter-spacing: -0.02em;
+    margin-bottom: 24px;
+  }
     }
 </style>
