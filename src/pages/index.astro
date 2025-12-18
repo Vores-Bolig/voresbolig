@@ -74,6 +74,21 @@ featured.sort((a, b) => order.indexOf(a.title) - order.indexOf(b.title));
         <div class="hero__line"></div>
       </div>
 
+      <div class="hero__deskMeta">
+  <div class="hero__deskLeft">Organisationen<br />for borgerne</div>
+
+  <div class="hero__deskCenter">
+    <div class="hero__deskVB">/VB</div>
+    <p class="hero__deskText">
+      Jeres boligselskab, der<br />
+      der administrerer og udlejer almene<br />
+      boliger og lokaler til beboere.
+    </p>
+  </div>
+
+  <a href="/kontakt" class="hero__deskKontakt">Kontakt →</a>
+</div>
+
       <p class="hero__text">
         Jeres boligselskab, der administrerer og udlejer almene boliger og lokaler til beboere.
       </p>
@@ -85,20 +100,30 @@ featured.sort((a, b) => order.indexOf(a.title) - order.indexOf(b.title));
         SKABER<br />
         NÆRHED
       </h1>
+      <h1 class="hero__titleDesktop" aria-label="HJEM SKABER NÆRHED">
+      <span class="t1">HJEM</span>
+      <span class="t2">SKABER</span>
+      <span class="t3">NÆRHED</span>
+      </h1>
     </div>
   </section>
 
   <section class="sek_to">
-    <p>HJEMLIGHED FORMER HELE VORES ARBEJDE, FRA ANKOMSTENS RO TIL HVERDAGENS RYTME.</p>
+    <p  class="sek_to__text sek_to__text--mobile">HJEMLIGHED FORMER HELE VORES ARBEJDE, FRA ANKOMSTENS RO TIL HVERDAGENS RYTME.</p>
+    <p class="sek_to__text sek_to__text--desktop">
+  HJEMLIGHED FORMER HELE<br />
+  VORES ARBEJDE, FRA ANKOMSTENS<br />
+  RO TIL HVERDAGENS RYTME.
+</p>
     <img src="bolig.webp" alt="bolig billeder" />
   </section>
 
   <section class="organisationen">
     <div class="organisationen__content">
       <div class="organisationen__label">Organisationen</div>
-
+      <div class="organisationen__tag">/OM OS</div>
       <p class="organisationen__text">
-        Frederikssund, som administrerer og udlejer boliger til mennesker i alle livssituationer. Som en non-profit organisation arbejder de efter et klart formål: at skabe gode, trygge og økonomisk tilgængelige boliger for deres beboere.
+       Vores Bolig er et alment boligselskab i Frederikssund, som administrerer og udlejer boliger til mennesker i alle livssituationer. Som en non-profit organisation arbejder de efter et klart formål: at skabe gode, trygge og økonomisk tilgængelige boliger for deres beboere.
       </p>
 
       <p class="organisationen__text">
@@ -107,7 +132,7 @@ featured.sort((a, b) => order.indexOf(a.title) - order.indexOf(b.title));
 
       <div class="organisationen__cta">
         <h2>UDLEJ<br />LOKALER</h2>
-        <a href="/lokaler">ALLE LOKALER</a>→
+        <a href="/lokaler">ALLE LOKALER →</a>
       </div>
     </div>
 
@@ -382,6 +407,19 @@ featured.sort((a, b) => order.indexOf(a.title) - order.indexOf(b.title));
 :global(.navd) { display: none !important; }
 :global(.nav)  { display: flex !important; }
 
+ .heroDeskOrg {
+    display: none;
+  }
+  .hero__titleDesktop {
+  display: none;
+}
+.hero__deskMeta {
+  display: none;
+}
+.sek_to__text--desktop { display: none; }
+.sek_to__text--mobile { display: block; }
+
+.organisationen__tag { display: none; }
 
   @media (min-width: 750px) {
   
@@ -394,5 +432,284 @@ featured.sort((a, b) => order.indexOf(a.title) - order.indexOf(b.title));
   }
  :global(.navd) { display: grid !important; }
   :global(.nav)  { display: none !important; }
+
+  .hero__title {
+    display: none;
+  }
+   .sek_to__text--desktop { display: block; }
+  .sek_to__text--mobile { display: none; }
+  
+  .hero__meta,
+  .hero__text,
+  .hero__link {
+    display: none;
+  }
+  .hero__titleDesktop {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 160px;           
+    align-items: end;
+    margin-top: auto;             
+    margin-bottom: 0px;
+    font-family: "Whyte Inktrap";
+    font-size: 180px;
+    line-height: 0.85;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: -0.4rem;
+    color: #fbfbfb;
+    transform: translateY(-10px);
+  }
+
+  .hero {
+   padding-inline: 24px;
+  }
+
+  .hero__titleDesktop .t1 { justify-self: start; }
+  .hero__titleDesktop .t2 { justify-self: end; }
+
+  .hero__titleDesktop .t3 {
+    grid-column: 1 / -1;
+    justify-self: center;         
+  }
+
+  .heroDeskOrg {
+  left: 24px;
+  font-family: "Whyte";
+  font-size: 24px;
+  font-weight: 300;
+  color: #fbfbfb;
+  line-height: 1.2;
+  display: block;
 }
+.hero {
+    height: 812px;       
+  }
+  .hero__img,
+  .hero__overlay {
+    height: 100%;        
+  }
+
+.hero__line {
+    margin-top: 90px;   
+    padding-inline: -24px;
+  }
+  .hero__deskMeta {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;  
+    align-items: start;
+    margin-top: 18px;                   
+    font-family: "Whyte";
+    font-size: 24px;
+    font-weight: 300;
+  }
+
+  .hero__deskLeft {
+    justify-self: start;
+    line-height: 1.15;
+  }
+
+  .hero__deskCenter {
+    justify-self: center;
+    text-align: left;
+    max-width: 520px; 
+  }
+
+  .hero__deskVB {
+    font-size: 15px;
+    opacity: 0.85;
+    margin-bottom: 10px;
+  }
+
+  .hero__deskText {
+    margin: 0;
+    line-height: 1.25;
+    text-indent: 112px;
+    margin-top: -32px;
+  }
+
+  .hero__deskKontakt {
+    justify-self: end;
+    text-decoration: none;
+    color: inherit;
+    white-space: nowrap;
+  }
+
+  .sek_to{
+    height: 815px;                
+    padding-inline: 24px;
+    flex-direction: column;
+    justify-content: flex-start;   
+    border-bottom: 1px solid rgba(0,0,0,0.15);
+  }
+
+  .sek_to p{
+    font-size: 72px;
+    line-height: 1.02;
+    max-width: 1400px;             
+  }
+
+  .sek_to img{
+    width: 316px;
+    height: 428px;
+    object-fit: cover;
+    margin-top: 120px;            
+    margin-left: auto;   
+    margin-right: 230px;          
+    margin-bottom: 0;
+  }
+
+  .organisationen{
+    height: 970px;          
+    padding-inline: 24px;
+    position: relative;
+  }
+
+  .organisationen__content{
+    display: grid;
+    grid-template-columns: 240px 120px 1fr; 
+    column-gap: 80px;
+    align-items: start;
+    width: 100%;
+  }
+
+  .organisationen__label{
+    font-size: 24px;
+    margin: 0;
+    font-weight: 300;
+  }
+
+  .organisationen__tag{
+    display: block;
+    font-family: "Whyte Mono Inktrap";
+    font-size: 16px;
+    opacity: 0.6;
+    margin-top: 2px;
+    transform: translateX(524px);
+  }
+
+  .organisationen__text{
+    grid-column: 3;
+    justify-self: end;
+    font-size: 24px;
+    line-height: 1.2;
+    width: 550px;
+    max-width: none;
+    margin: 0;
+    font-weight: 300;
+  }
+
+  
+  .organisationen__cta{
+    position: absolute;
+    left: 24px;
+    right: 24px;
+    bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-top: 0; 
+  }
+
+  .organisationen__cta h2{
+    font-size: 120px;
+    line-height: 1;
+    margin: 0;
+
+  }
+
+  .organisationen__cta a{
+    font-size: 16px;
+    font-family: "Whyte Mono Inktrap";
+    white-space: nowrap;
+    margin-bottom: 10px;
+  }
+  .organisationen__text:first-of-type{
+    text-indent: 112px;
+  }
+   .organisationen__divider {
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+  }
+  .lokaleCards {
+    height: auto;                
+    margin-top: 0;
+    padding: 0 24px 80px;
+    background: #fbfbfb;
+    border-bottom: none;
+    margin-bottom: 120px;
+
+    display: grid;
+    grid-template-columns: 453px 454px 453px;
+    column-gap: 15px;
+    justify-content: center;
+    align-items: start;
+  }
+
+  .lokaleCard {
+    display: flex;
+    flex-direction: column;
+    margin: 0;                  
+  }
+
+  
+  .lokaleMeta {
+    margin-top: 120px;
+    font-family: "Whyte Mono Inktrap";
+    font-size: 16px;
+    letter-spacing: 0;
+    order: -1;
+    margin-bottom: 12px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    row-gap: 2px;
+  }
+   .lokaleLeft {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .lokaleName,
+  .lokaleCity,
+  .lokalePrice {
+    font-size: 16px;
+    font-family: "Whyte Mono Inktrap";
+    font-weight: 300;
+  }
+
+  .lokaleCity {
+    order: -1;
+    opacity: 0.5;
+  }
+  .lokalePrice {
+    align-self: end;
+    font-family: "Whyte Mono Inktrap";
+  }
+
+  
+  .lokaleImg {
+    width: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+ 
+  .lokaleCard:nth-child(1) .lokaleImg,
+  .lokaleCard:nth-child(3) .lokaleImg {
+    width: 453px;
+    height: 624px;
+  }
+
+  
+  .lokaleCard:nth-child(2) {
+    transform: translateY(175px); 
+  }
+
+  .lokaleCard:nth-child(2) .lokaleImg {
+    width: 454px;
+    height: 449px;
+  }
+
+}
+
 </style>
